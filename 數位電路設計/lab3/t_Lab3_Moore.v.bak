@@ -1,0 +1,27 @@
+module t_Lab3_Moore;
+	wire y1,y2;
+	reg x,clock,reset;
+	Lab3_Moore_state_diagram M1(y1,x,clock,reset);
+	Lab3_Moore_structural M0(y2,x,clock,reset);
+	initial #400 $finish;
+	initial begin
+		clock=0;
+		forever #10 clock=~clock;
+	end
+initial fork
+		reset = 0;x=0;
+		#2 reset = 1;
+		#200 reset = 0;
+		#202 reset = 1;
+		#40 x = 1;
+		#80 x = 0;
+		#120 x = 1;
+		#160 x = 0;
+		#200 x = 1;
+		#240 x = 0;
+		#280 x = 1;
+		#320 x = 0;
+		#360 x = 1;
+		#400 x = 0;
+	join
+endmodule

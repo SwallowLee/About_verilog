@@ -1,0 +1,94 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Wed Dec 28 17:42:32 2016
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "rx" LOCATE = SITE "R7" LEVEL 1;
+COMP "tx" LOCATE = SITE "M14" LEVEL 1;
+COMP "clk" LOCATE = SITE "C9" LEVEL 1;
+COMP "reset" LOCATE = SITE "K17" LEVEL 1;
+COMP "led<0>" LOCATE = SITE "F12" LEVEL 1;
+COMP "led<1>" LOCATE = SITE "E12" LEVEL 1;
+COMP "led<2>" LOCATE = SITE "E11" LEVEL 1;
+COMP "led<3>" LOCATE = SITE "F11" LEVEL 1;
+COMP "led<4>" LOCATE = SITE "C11" LEVEL 1;
+COMP "led<5>" LOCATE = SITE "D11" LEVEL 1;
+COMP "led<6>" LOCATE = SITE "E9" LEVEL 1;
+COMP "led<7>" LOCATE = SITE "F9" LEVEL 1;
+COMP "button" LOCATE = SITE "D18" LEVEL 1;
+NET "clk_BUFGP/IBUFG" BEL "clk_BUFGP/BUFG.GCLKMUX" USELOCALCONNECT;
+TIMEGRP clk = BEL "Mram_data3.SLICEM_F" BEL "Mram_data3.SLICEM_G" BEL
+        "Mram_data1.SLICEM_F" BEL "Mram_data1.SLICEM_G" BEL
+        "Mram_data2.SLICEM_F" BEL "Mram_data2.SLICEM_G" BEL
+        "Mram_data4.SLICEM_F" BEL "Mram_data4.SLICEM_G" BEL
+        "Mram_data5.SLICEM_F" BEL "Mram_data5.SLICEM_G" BEL
+        "Mram_data6.SLICEM_F" BEL "Mram_data6.SLICEM_G" BEL
+        "Mram_data7.SLICEM_F" BEL "Mram_data7.SLICEM_G" BEL
+        "Mram_data10.SLICEM_F" BEL "Mram_data10.SLICEM_G" BEL
+        "Mram_data8.SLICEM_F" BEL "Mram_data8.SLICEM_G" BEL
+        "Mram_data9.SLICEM_F" BEL "Mram_data9.SLICEM_G" BEL
+        "Mram_data13.SLICEM_F" BEL "Mram_data13.SLICEM_G" BEL
+        "Mram_data11.SLICEM_F" BEL "Mram_data11.SLICEM_G" BEL
+        "Mram_data12.SLICEM_F" BEL "Mram_data12.SLICEM_G" BEL
+        "Mram_data16.SLICEM_F" BEL "Mram_data16.SLICEM_G" BEL
+        "Mram_data14.SLICEM_F" BEL "Mram_data14.SLICEM_G" BEL
+        "Mram_data15.SLICEM_F" BEL "Mram_data15.SLICEM_G" BEL
+        "Mram_data17.SLICEM_F" BEL "Mram_data17.SLICEM_G" BEL
+        "Mram_data18.SLICEM_F" BEL "Mram_data18.SLICEM_G" BEL
+        "Mram_data19.SLICEM_F" BEL "Mram_data19.SLICEM_G" BEL
+        "Mram_data20.SLICEM_F" BEL "Mram_data20.SLICEM_G" BEL
+        "Mram_data23.SLICEM_F" BEL "Mram_data23.SLICEM_G" BEL
+        "Mram_data21.SLICEM_F" BEL "Mram_data21.SLICEM_G" BEL
+        "Mram_data22.SLICEM_F" BEL "Mram_data22.SLICEM_G" BEL
+        "Mram_data24.SLICEM_F" BEL "Mram_data24.SLICEM_G" BEL "send_counter_0"
+        BEL "send_counter_1" BEL "send_counter_2" BEL "send_counter_3" BEL
+        "send_counter_4" BEL "send_counter_5" BEL "i_0" BEL "i_1" BEL "i_2"
+        BEL "i_3" BEL "i_4" BEL "i_5" BEL "j_0" BEL "j_1" BEL "j_2" BEL "j_3"
+        BEL "j_4" BEL "j_5" BEL "j_6" BEL "j_7" BEL "j_8" BEL "j_9" BEL "j_10"
+        BEL "j_11" BEL "j_12" BEL "j_13" BEL "j_14" BEL "j_15" BEL "j_16" BEL
+        "j_17" BEL "j_18" BEL "j_19" BEL "j_20" BEL "j_21" BEL "j_22" BEL
+        "j_23" BEL "j_24" BEL "j_25" BEL "j_26" BEL "j_27" BEL "j_28" BEL
+        "j_29" BEL "j_30" BEL "j_31" BEL "Q_FSM_FFd1" BEL "btn_db/counter_20"
+        BEL "btn_db/counter_19" BEL "btn_db/counter_18" BEL
+        "btn_db/counter_17" BEL "btn_db/counter_16" BEL "btn_db/counter_15"
+        BEL "btn_db/counter_14" BEL "btn_db/counter_13" BEL
+        "btn_db/counter_12" BEL "btn_db/counter_11" BEL "btn_db/counter_10"
+        BEL "btn_db/counter_9" BEL "btn_db/counter_8" BEL "btn_db/counter_7"
+        BEL "btn_db/counter_6" BEL "btn_db/counter_5" BEL "btn_db/counter_4"
+        BEL "btn_db/counter_3" BEL "btn_db/counter_2" BEL "btn_db/counter_1"
+        BEL "btn_db/counter_0" BEL "btn_db/pressed" BEL
+        "btn_db/debounced_btn_state" BEL "uart/tx_bits_remaining_3" BEL
+        "uart/tx_bits_remaining_2" BEL "uart/tx_bits_remaining_1" BEL
+        "uart/tx_bits_remaining_0" BEL "uart/tx_data_7" BEL "uart/rx_data_7"
+        BEL "uart/rx_data_6" BEL "uart/rx_data_5" BEL "uart/rx_data_4" BEL
+        "uart/rx_data_3" BEL "uart/rx_data_2" BEL "uart/rx_data_1" BEL
+        "uart/rx_data_0" BEL "uart/rx_bits_remaining_3" BEL
+        "uart/rx_bits_remaining_2" BEL "uart/rx_bits_remaining_1" BEL
+        "uart/rx_bits_remaining_0" BEL "uart/tx_countdown_5" BEL
+        "uart/tx_countdown_4" BEL "uart/tx_countdown_3" BEL
+        "uart/tx_countdown_1" BEL "uart/tx_countdown_0" BEL
+        "uart/tx_clk_divider_9" BEL "uart/tx_clk_divider_7" BEL
+        "uart/tx_clk_divider_6" BEL "uart/tx_clk_divider_5" BEL
+        "uart/tx_clk_divider_3" BEL "uart/tx_clk_divider_0" BEL
+        "uart/rx_countdown_5" BEL "uart/rx_countdown_4" BEL
+        "uart/rx_countdown_3" BEL "uart/rx_countdown_2" BEL
+        "uart/rx_countdown_0" BEL "uart/tx_state_1" BEL "uart/tx_state_0" BEL
+        "uart/recv_state_2" BEL "uart/recv_state_1" BEL "uart/tx_out" BEL
+        "uart/tx_data_6" BEL "uart/tx_data_5" BEL "uart/tx_data_4" BEL
+        "uart/tx_data_3" BEL "uart/tx_data_2" BEL "uart/tx_data_1" BEL
+        "uart/tx_data_0" BEL "uart/tx_countdown_2" BEL
+        "uart/tx_clk_divider_10" BEL "uart/tx_clk_divider_8" BEL
+        "uart/tx_clk_divider_4" BEL "uart/tx_clk_divider_2" BEL
+        "uart/tx_clk_divider_1" BEL "uart/rx_countdown_1" BEL
+        "uart/recv_state_0" BEL "uart/rx_clk_divider_10" BEL
+        "uart/rx_clk_divider_9" BEL "uart/rx_clk_divider_8" BEL
+        "uart/rx_clk_divider_7" BEL "uart/rx_clk_divider_6" BEL
+        "uart/rx_clk_divider_5" BEL "uart/rx_clk_divider_4" BEL
+        "uart/rx_clk_divider_3" BEL "uart/rx_clk_divider_2" BEL
+        "uart/rx_clk_divider_1" BEL "uart/rx_clk_divider_0" BEL "Q_FSM_FFd2"
+        BEL "i_0_1" BEL "i_0_2" BEL "i_1_1" BEL "i_1_2" BEL "i_2_1" BEL
+        "i_2_2" BEL "i_3_1" BEL "i_3_2" BEL "i_0_3" BEL "i_1_3" BEL "i_2_3"
+        BEL "i_3_3" BEL "clk_BUFGP/BUFG.GCLKMUX" BEL "clk_BUFGP/BUFG";
+TS_clk = PERIOD TIMEGRP "clk" 20 ns HIGH 40%;
+SCHEMATIC END;
+

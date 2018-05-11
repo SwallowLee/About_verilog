@@ -1,0 +1,658 @@
+--------------------------------------------------------------------------------
+Release 14.7 Trace  (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise -v 3 -s 4
+-n 3 -fastpaths -xml lab6.twx lab6.ncd -o lab6.twr lab6.pcf -ucf lab6.ucf
+
+Design file:              lab6.ncd
+Physical constraint file: lab6.pcf
+Device,package,speed:     xc3s500e,fg320,-4 (PRODUCTION 1.27 2013-10-13)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+INFO:Timing:3390 - This architecture does not support a default System Jitter 
+   value, please add SYSTEM_JITTER constraint to the UCF to modify the Clock 
+   Uncertainty calculation.
+INFO:Timing:3389 - This architecture does not support 'Discrete Jitter' and 
+   'Phase Error' calculations, these terms will be zero in the Clock 
+   Uncertainty calculation.  Please make appropriate modification to 
+   SYSTEM_JITTER to account for the unsupported Discrete Jitter and Phase 
+   Error.
+
+================================================================================
+Timing constraint: TS_clk = PERIOD TIMEGRP "clk" 20 ns HIGH 40%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 54108 paths analyzed, 796 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is  15.661ns.
+--------------------------------------------------------------------------------
+
+Paths for end point Mram_data24.SLICEM_F (SLICE_X54Y61.BY), 2810 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     4.339ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               i_0_1 (FF)
+  Destination:          Mram_data24.SLICEM_F (RAM)
+  Requirement:          20.000ns
+  Data Path Delay:      15.651ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.010ns (0.003 - 0.013)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: i_0_1 to Mram_data24.SLICEM_F
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X55Y54.YQ      Tcko                  0.587   i_0_1
+                                                       i_0_1
+    SLICE_X54Y43.G1      net (fanout=5)        1.904   i_0_1
+    SLICE_X54Y43.Y       Tilo                  0.759   N8
+                                                       Mram_data2.SLICEM_G
+    SLICE_X55Y38.G4      net (fanout=1)        0.275   N7
+    SLICE_X55Y38.Y       Tilo                  0.704   _varindex0000<0>
+                                                       inst_LPM_MUX21_SW0
+    SLICE_X55Y38.F3      net (fanout=1)        0.023   inst_LPM_MUX21_SW0/O
+    SLICE_X55Y38.X       Tilo                  0.704   _varindex0000<0>
+                                                       inst_LPM_MUX21
+    MULT18X18_X1Y5.A0    net (fanout=1)        1.183   _varindex0000<0>
+    MULT18X18_X1Y5.P0    Tmult                 3.657   Mmult_data_mult0000
+                                                       Mmult_data_mult0000
+    SLICE_X55Y45.F2      net (fanout=1)        0.722   data_mult0000<0>
+    SLICE_X55Y45.COUT    Topcyf                1.162   data_addsub0000<0>
+                                                       Madd_data_addsub0000_lut<0>
+                                                       Madd_data_addsub0000_cy<0>
+                                                       Madd_data_addsub0000_cy<1>
+    SLICE_X55Y46.CIN     net (fanout=1)        0.000   Madd_data_addsub0000_cy<1>
+    SLICE_X55Y46.COUT    Tbyp                  0.118   data_addsub0000<2>
+                                                       Madd_data_addsub0000_cy<2>
+                                                       Madd_data_addsub0000_cy<3>
+    SLICE_X55Y47.CIN     net (fanout=1)        0.000   Madd_data_addsub0000_cy<3>
+    SLICE_X55Y47.Y       Tciny                 0.869   Msub__sub0000_cy<4>
+                                                       Madd_data_addsub0000_cy<4>
+                                                       Madd_data_addsub0000_xor<5>
+    SLICE_X54Y49.F1      net (fanout=3)        0.466   Msub__sub0000_lut<5>
+    SLICE_X54Y49.X       Tilo                  0.759   _sub0000<7>
+                                                       Msub__sub0000_xor<7>11
+    SLICE_X54Y61.BY      net (fanout=3)        1.298   _sub0000<7>
+    SLICE_X54Y61.CLK     Tds                   0.461   N52
+                                                       Mram_data24.SLICEM_F
+    -------------------------------------------------  ---------------------------
+    Total                                     15.651ns (9.780ns logic, 5.871ns route)
+                                                       (62.5% logic, 37.5% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     4.377ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               i_0_1 (FF)
+  Destination:          Mram_data24.SLICEM_F (RAM)
+  Requirement:          20.000ns
+  Data Path Delay:      15.613ns (Levels of Logic = 8)
+  Clock Path Skew:      -0.010ns (0.003 - 0.013)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: i_0_1 to Mram_data24.SLICEM_F
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X55Y54.YQ      Tcko                  0.587   i_0_1
+                                                       i_0_1
+    SLICE_X54Y43.G1      net (fanout=5)        1.904   i_0_1
+    SLICE_X54Y43.Y       Tilo                  0.759   N8
+                                                       Mram_data2.SLICEM_G
+    SLICE_X55Y38.G4      net (fanout=1)        0.275   N7
+    SLICE_X55Y38.Y       Tilo                  0.704   _varindex0000<0>
+                                                       inst_LPM_MUX21_SW0
+    SLICE_X55Y38.F3      net (fanout=1)        0.023   inst_LPM_MUX21_SW0/O
+    SLICE_X55Y38.X       Tilo                  0.704   _varindex0000<0>
+                                                       inst_LPM_MUX21
+    MULT18X18_X1Y5.A0    net (fanout=1)        1.183   _varindex0000<0>
+    MULT18X18_X1Y5.P3    Tmult                 3.657   Mmult_data_mult0000
+                                                       Mmult_data_mult0000
+    SLICE_X55Y46.G2      net (fanout=1)        0.963   data_mult0000<3>
+    SLICE_X55Y46.COUT    Topcyg                1.001   data_addsub0000<2>
+                                                       Madd_data_addsub0000_lut<3>
+                                                       Madd_data_addsub0000_cy<3>
+    SLICE_X55Y47.CIN     net (fanout=1)        0.000   Madd_data_addsub0000_cy<3>
+    SLICE_X55Y47.Y       Tciny                 0.869   Msub__sub0000_cy<4>
+                                                       Madd_data_addsub0000_cy<4>
+                                                       Madd_data_addsub0000_xor<5>
+    SLICE_X54Y49.F1      net (fanout=3)        0.466   Msub__sub0000_lut<5>
+    SLICE_X54Y49.X       Tilo                  0.759   _sub0000<7>
+                                                       Msub__sub0000_xor<7>11
+    SLICE_X54Y61.BY      net (fanout=3)        1.298   _sub0000<7>
+    SLICE_X54Y61.CLK     Tds                   0.461   N52
+                                                       Mram_data24.SLICEM_F
+    -------------------------------------------------  ---------------------------
+    Total                                     15.613ns (9.501ns logic, 6.112ns route)
+                                                       (60.9% logic, 39.1% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     4.456ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               i_0_1 (FF)
+  Destination:          Mram_data24.SLICEM_F (RAM)
+  Requirement:          20.000ns
+  Data Path Delay:      15.534ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.010ns (0.003 - 0.013)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: i_0_1 to Mram_data24.SLICEM_F
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X55Y54.YQ      Tcko                  0.587   i_0_1
+                                                       i_0_1
+    SLICE_X54Y43.G1      net (fanout=5)        1.904   i_0_1
+    SLICE_X54Y43.Y       Tilo                  0.759   N8
+                                                       Mram_data2.SLICEM_G
+    SLICE_X55Y38.G4      net (fanout=1)        0.275   N7
+    SLICE_X55Y38.Y       Tilo                  0.704   _varindex0000<0>
+                                                       inst_LPM_MUX21_SW0
+    SLICE_X55Y38.F3      net (fanout=1)        0.023   inst_LPM_MUX21_SW0/O
+    SLICE_X55Y38.X       Tilo                  0.704   _varindex0000<0>
+                                                       inst_LPM_MUX21
+    MULT18X18_X1Y5.A0    net (fanout=1)        1.183   _varindex0000<0>
+    MULT18X18_X1Y5.P1    Tmult                 3.657   Mmult_data_mult0000
+                                                       Mmult_data_mult0000
+    SLICE_X55Y45.G1      net (fanout=1)        0.766   data_mult0000<1>
+    SLICE_X55Y45.COUT    Topcyg                1.001   data_addsub0000<0>
+                                                       Madd_data_addsub0000_lut<1>
+                                                       Madd_data_addsub0000_cy<1>
+    SLICE_X55Y46.CIN     net (fanout=1)        0.000   Madd_data_addsub0000_cy<1>
+    SLICE_X55Y46.COUT    Tbyp                  0.118   data_addsub0000<2>
+                                                       Madd_data_addsub0000_cy<2>
+                                                       Madd_data_addsub0000_cy<3>
+    SLICE_X55Y47.CIN     net (fanout=1)        0.000   Madd_data_addsub0000_cy<3>
+    SLICE_X55Y47.Y       Tciny                 0.869   Msub__sub0000_cy<4>
+                                                       Madd_data_addsub0000_cy<4>
+                                                       Madd_data_addsub0000_xor<5>
+    SLICE_X54Y49.F1      net (fanout=3)        0.466   Msub__sub0000_lut<5>
+    SLICE_X54Y49.X       Tilo                  0.759   _sub0000<7>
+                                                       Msub__sub0000_xor<7>11
+    SLICE_X54Y61.BY      net (fanout=3)        1.298   _sub0000<7>
+    SLICE_X54Y61.CLK     Tds                   0.461   N52
+                                                       Mram_data24.SLICEM_F
+    -------------------------------------------------  ---------------------------
+    Total                                     15.534ns (9.619ns logic, 5.915ns route)
+                                                       (61.9% logic, 38.1% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point Mram_data24.SLICEM_G (SLICE_X54Y61.BY), 2810 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     4.358ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               i_0_1 (FF)
+  Destination:          Mram_data24.SLICEM_G (RAM)
+  Requirement:          20.000ns
+  Data Path Delay:      15.632ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.010ns (0.003 - 0.013)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: i_0_1 to Mram_data24.SLICEM_G
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X55Y54.YQ      Tcko                  0.587   i_0_1
+                                                       i_0_1
+    SLICE_X54Y43.G1      net (fanout=5)        1.904   i_0_1
+    SLICE_X54Y43.Y       Tilo                  0.759   N8
+                                                       Mram_data2.SLICEM_G
+    SLICE_X55Y38.G4      net (fanout=1)        0.275   N7
+    SLICE_X55Y38.Y       Tilo                  0.704   _varindex0000<0>
+                                                       inst_LPM_MUX21_SW0
+    SLICE_X55Y38.F3      net (fanout=1)        0.023   inst_LPM_MUX21_SW0/O
+    SLICE_X55Y38.X       Tilo                  0.704   _varindex0000<0>
+                                                       inst_LPM_MUX21
+    MULT18X18_X1Y5.A0    net (fanout=1)        1.183   _varindex0000<0>
+    MULT18X18_X1Y5.P0    Tmult                 3.657   Mmult_data_mult0000
+                                                       Mmult_data_mult0000
+    SLICE_X55Y45.F2      net (fanout=1)        0.722   data_mult0000<0>
+    SLICE_X55Y45.COUT    Topcyf                1.162   data_addsub0000<0>
+                                                       Madd_data_addsub0000_lut<0>
+                                                       Madd_data_addsub0000_cy<0>
+                                                       Madd_data_addsub0000_cy<1>
+    SLICE_X55Y46.CIN     net (fanout=1)        0.000   Madd_data_addsub0000_cy<1>
+    SLICE_X55Y46.COUT    Tbyp                  0.118   data_addsub0000<2>
+                                                       Madd_data_addsub0000_cy<2>
+                                                       Madd_data_addsub0000_cy<3>
+    SLICE_X55Y47.CIN     net (fanout=1)        0.000   Madd_data_addsub0000_cy<3>
+    SLICE_X55Y47.Y       Tciny                 0.869   Msub__sub0000_cy<4>
+                                                       Madd_data_addsub0000_cy<4>
+                                                       Madd_data_addsub0000_xor<5>
+    SLICE_X54Y49.F1      net (fanout=3)        0.466   Msub__sub0000_lut<5>
+    SLICE_X54Y49.X       Tilo                  0.759   _sub0000<7>
+                                                       Msub__sub0000_xor<7>11
+    SLICE_X54Y61.BY      net (fanout=3)        1.298   _sub0000<7>
+    SLICE_X54Y61.CLK     Tds                   0.442   N52
+                                                       Mram_data24.SLICEM_G
+    -------------------------------------------------  ---------------------------
+    Total                                     15.632ns (9.761ns logic, 5.871ns route)
+                                                       (62.4% logic, 37.6% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     4.396ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               i_0_1 (FF)
+  Destination:          Mram_data24.SLICEM_G (RAM)
+  Requirement:          20.000ns
+  Data Path Delay:      15.594ns (Levels of Logic = 8)
+  Clock Path Skew:      -0.010ns (0.003 - 0.013)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: i_0_1 to Mram_data24.SLICEM_G
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X55Y54.YQ      Tcko                  0.587   i_0_1
+                                                       i_0_1
+    SLICE_X54Y43.G1      net (fanout=5)        1.904   i_0_1
+    SLICE_X54Y43.Y       Tilo                  0.759   N8
+                                                       Mram_data2.SLICEM_G
+    SLICE_X55Y38.G4      net (fanout=1)        0.275   N7
+    SLICE_X55Y38.Y       Tilo                  0.704   _varindex0000<0>
+                                                       inst_LPM_MUX21_SW0
+    SLICE_X55Y38.F3      net (fanout=1)        0.023   inst_LPM_MUX21_SW0/O
+    SLICE_X55Y38.X       Tilo                  0.704   _varindex0000<0>
+                                                       inst_LPM_MUX21
+    MULT18X18_X1Y5.A0    net (fanout=1)        1.183   _varindex0000<0>
+    MULT18X18_X1Y5.P3    Tmult                 3.657   Mmult_data_mult0000
+                                                       Mmult_data_mult0000
+    SLICE_X55Y46.G2      net (fanout=1)        0.963   data_mult0000<3>
+    SLICE_X55Y46.COUT    Topcyg                1.001   data_addsub0000<2>
+                                                       Madd_data_addsub0000_lut<3>
+                                                       Madd_data_addsub0000_cy<3>
+    SLICE_X55Y47.CIN     net (fanout=1)        0.000   Madd_data_addsub0000_cy<3>
+    SLICE_X55Y47.Y       Tciny                 0.869   Msub__sub0000_cy<4>
+                                                       Madd_data_addsub0000_cy<4>
+                                                       Madd_data_addsub0000_xor<5>
+    SLICE_X54Y49.F1      net (fanout=3)        0.466   Msub__sub0000_lut<5>
+    SLICE_X54Y49.X       Tilo                  0.759   _sub0000<7>
+                                                       Msub__sub0000_xor<7>11
+    SLICE_X54Y61.BY      net (fanout=3)        1.298   _sub0000<7>
+    SLICE_X54Y61.CLK     Tds                   0.442   N52
+                                                       Mram_data24.SLICEM_G
+    -------------------------------------------------  ---------------------------
+    Total                                     15.594ns (9.482ns logic, 6.112ns route)
+                                                       (60.8% logic, 39.2% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     4.475ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               i_0_1 (FF)
+  Destination:          Mram_data24.SLICEM_G (RAM)
+  Requirement:          20.000ns
+  Data Path Delay:      15.515ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.010ns (0.003 - 0.013)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: i_0_1 to Mram_data24.SLICEM_G
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X55Y54.YQ      Tcko                  0.587   i_0_1
+                                                       i_0_1
+    SLICE_X54Y43.G1      net (fanout=5)        1.904   i_0_1
+    SLICE_X54Y43.Y       Tilo                  0.759   N8
+                                                       Mram_data2.SLICEM_G
+    SLICE_X55Y38.G4      net (fanout=1)        0.275   N7
+    SLICE_X55Y38.Y       Tilo                  0.704   _varindex0000<0>
+                                                       inst_LPM_MUX21_SW0
+    SLICE_X55Y38.F3      net (fanout=1)        0.023   inst_LPM_MUX21_SW0/O
+    SLICE_X55Y38.X       Tilo                  0.704   _varindex0000<0>
+                                                       inst_LPM_MUX21
+    MULT18X18_X1Y5.A0    net (fanout=1)        1.183   _varindex0000<0>
+    MULT18X18_X1Y5.P1    Tmult                 3.657   Mmult_data_mult0000
+                                                       Mmult_data_mult0000
+    SLICE_X55Y45.G1      net (fanout=1)        0.766   data_mult0000<1>
+    SLICE_X55Y45.COUT    Topcyg                1.001   data_addsub0000<0>
+                                                       Madd_data_addsub0000_lut<1>
+                                                       Madd_data_addsub0000_cy<1>
+    SLICE_X55Y46.CIN     net (fanout=1)        0.000   Madd_data_addsub0000_cy<1>
+    SLICE_X55Y46.COUT    Tbyp                  0.118   data_addsub0000<2>
+                                                       Madd_data_addsub0000_cy<2>
+                                                       Madd_data_addsub0000_cy<3>
+    SLICE_X55Y47.CIN     net (fanout=1)        0.000   Madd_data_addsub0000_cy<3>
+    SLICE_X55Y47.Y       Tciny                 0.869   Msub__sub0000_cy<4>
+                                                       Madd_data_addsub0000_cy<4>
+                                                       Madd_data_addsub0000_xor<5>
+    SLICE_X54Y49.F1      net (fanout=3)        0.466   Msub__sub0000_lut<5>
+    SLICE_X54Y49.X       Tilo                  0.759   _sub0000<7>
+                                                       Msub__sub0000_xor<7>11
+    SLICE_X54Y61.BY      net (fanout=3)        1.298   _sub0000<7>
+    SLICE_X54Y61.CLK     Tds                   0.442   N52
+                                                       Mram_data24.SLICEM_G
+    -------------------------------------------------  ---------------------------
+    Total                                     15.515ns (9.600ns logic, 5.915ns route)
+                                                       (61.9% logic, 38.1% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point Mram_data15.SLICEM_F (SLICE_X54Y62.BY), 2810 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     4.431ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               i_0_1 (FF)
+  Destination:          Mram_data15.SLICEM_F (RAM)
+  Requirement:          20.000ns
+  Data Path Delay:      15.556ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.013ns (0.020 - 0.033)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: i_0_1 to Mram_data15.SLICEM_F
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X55Y54.YQ      Tcko                  0.587   i_0_1
+                                                       i_0_1
+    SLICE_X54Y43.G1      net (fanout=5)        1.904   i_0_1
+    SLICE_X54Y43.Y       Tilo                  0.759   N8
+                                                       Mram_data2.SLICEM_G
+    SLICE_X55Y38.G4      net (fanout=1)        0.275   N7
+    SLICE_X55Y38.Y       Tilo                  0.704   _varindex0000<0>
+                                                       inst_LPM_MUX21_SW0
+    SLICE_X55Y38.F3      net (fanout=1)        0.023   inst_LPM_MUX21_SW0/O
+    SLICE_X55Y38.X       Tilo                  0.704   _varindex0000<0>
+                                                       inst_LPM_MUX21
+    MULT18X18_X1Y5.A0    net (fanout=1)        1.183   _varindex0000<0>
+    MULT18X18_X1Y5.P0    Tmult                 3.657   Mmult_data_mult0000
+                                                       Mmult_data_mult0000
+    SLICE_X55Y45.F2      net (fanout=1)        0.722   data_mult0000<0>
+    SLICE_X55Y45.COUT    Topcyf                1.162   data_addsub0000<0>
+                                                       Madd_data_addsub0000_lut<0>
+                                                       Madd_data_addsub0000_cy<0>
+                                                       Madd_data_addsub0000_cy<1>
+    SLICE_X55Y46.CIN     net (fanout=1)        0.000   Madd_data_addsub0000_cy<1>
+    SLICE_X55Y46.COUT    Tbyp                  0.118   data_addsub0000<2>
+                                                       Madd_data_addsub0000_cy<2>
+                                                       Madd_data_addsub0000_cy<3>
+    SLICE_X55Y47.CIN     net (fanout=1)        0.000   Madd_data_addsub0000_cy<3>
+    SLICE_X55Y47.Y       Tciny                 0.869   Msub__sub0000_cy<4>
+                                                       Madd_data_addsub0000_cy<4>
+                                                       Madd_data_addsub0000_xor<5>
+    SLICE_X54Y49.F1      net (fanout=3)        0.466   Msub__sub0000_lut<5>
+    SLICE_X54Y49.X       Tilo                  0.759   _sub0000<7>
+                                                       Msub__sub0000_xor<7>11
+    SLICE_X54Y62.BY      net (fanout=3)        1.203   _sub0000<7>
+    SLICE_X54Y62.CLK     Tds                   0.461   N34
+                                                       Mram_data15.SLICEM_F
+    -------------------------------------------------  ---------------------------
+    Total                                     15.556ns (9.780ns logic, 5.776ns route)
+                                                       (62.9% logic, 37.1% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     4.469ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               i_0_1 (FF)
+  Destination:          Mram_data15.SLICEM_F (RAM)
+  Requirement:          20.000ns
+  Data Path Delay:      15.518ns (Levels of Logic = 8)
+  Clock Path Skew:      -0.013ns (0.020 - 0.033)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: i_0_1 to Mram_data15.SLICEM_F
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X55Y54.YQ      Tcko                  0.587   i_0_1
+                                                       i_0_1
+    SLICE_X54Y43.G1      net (fanout=5)        1.904   i_0_1
+    SLICE_X54Y43.Y       Tilo                  0.759   N8
+                                                       Mram_data2.SLICEM_G
+    SLICE_X55Y38.G4      net (fanout=1)        0.275   N7
+    SLICE_X55Y38.Y       Tilo                  0.704   _varindex0000<0>
+                                                       inst_LPM_MUX21_SW0
+    SLICE_X55Y38.F3      net (fanout=1)        0.023   inst_LPM_MUX21_SW0/O
+    SLICE_X55Y38.X       Tilo                  0.704   _varindex0000<0>
+                                                       inst_LPM_MUX21
+    MULT18X18_X1Y5.A0    net (fanout=1)        1.183   _varindex0000<0>
+    MULT18X18_X1Y5.P3    Tmult                 3.657   Mmult_data_mult0000
+                                                       Mmult_data_mult0000
+    SLICE_X55Y46.G2      net (fanout=1)        0.963   data_mult0000<3>
+    SLICE_X55Y46.COUT    Topcyg                1.001   data_addsub0000<2>
+                                                       Madd_data_addsub0000_lut<3>
+                                                       Madd_data_addsub0000_cy<3>
+    SLICE_X55Y47.CIN     net (fanout=1)        0.000   Madd_data_addsub0000_cy<3>
+    SLICE_X55Y47.Y       Tciny                 0.869   Msub__sub0000_cy<4>
+                                                       Madd_data_addsub0000_cy<4>
+                                                       Madd_data_addsub0000_xor<5>
+    SLICE_X54Y49.F1      net (fanout=3)        0.466   Msub__sub0000_lut<5>
+    SLICE_X54Y49.X       Tilo                  0.759   _sub0000<7>
+                                                       Msub__sub0000_xor<7>11
+    SLICE_X54Y62.BY      net (fanout=3)        1.203   _sub0000<7>
+    SLICE_X54Y62.CLK     Tds                   0.461   N34
+                                                       Mram_data15.SLICEM_F
+    -------------------------------------------------  ---------------------------
+    Total                                     15.518ns (9.501ns logic, 6.017ns route)
+                                                       (61.2% logic, 38.8% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     4.548ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               i_0_1 (FF)
+  Destination:          Mram_data15.SLICEM_F (RAM)
+  Requirement:          20.000ns
+  Data Path Delay:      15.439ns (Levels of Logic = 9)
+  Clock Path Skew:      -0.013ns (0.020 - 0.033)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: i_0_1 to Mram_data15.SLICEM_F
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X55Y54.YQ      Tcko                  0.587   i_0_1
+                                                       i_0_1
+    SLICE_X54Y43.G1      net (fanout=5)        1.904   i_0_1
+    SLICE_X54Y43.Y       Tilo                  0.759   N8
+                                                       Mram_data2.SLICEM_G
+    SLICE_X55Y38.G4      net (fanout=1)        0.275   N7
+    SLICE_X55Y38.Y       Tilo                  0.704   _varindex0000<0>
+                                                       inst_LPM_MUX21_SW0
+    SLICE_X55Y38.F3      net (fanout=1)        0.023   inst_LPM_MUX21_SW0/O
+    SLICE_X55Y38.X       Tilo                  0.704   _varindex0000<0>
+                                                       inst_LPM_MUX21
+    MULT18X18_X1Y5.A0    net (fanout=1)        1.183   _varindex0000<0>
+    MULT18X18_X1Y5.P1    Tmult                 3.657   Mmult_data_mult0000
+                                                       Mmult_data_mult0000
+    SLICE_X55Y45.G1      net (fanout=1)        0.766   data_mult0000<1>
+    SLICE_X55Y45.COUT    Topcyg                1.001   data_addsub0000<0>
+                                                       Madd_data_addsub0000_lut<1>
+                                                       Madd_data_addsub0000_cy<1>
+    SLICE_X55Y46.CIN     net (fanout=1)        0.000   Madd_data_addsub0000_cy<1>
+    SLICE_X55Y46.COUT    Tbyp                  0.118   data_addsub0000<2>
+                                                       Madd_data_addsub0000_cy<2>
+                                                       Madd_data_addsub0000_cy<3>
+    SLICE_X55Y47.CIN     net (fanout=1)        0.000   Madd_data_addsub0000_cy<3>
+    SLICE_X55Y47.Y       Tciny                 0.869   Msub__sub0000_cy<4>
+                                                       Madd_data_addsub0000_cy<4>
+                                                       Madd_data_addsub0000_xor<5>
+    SLICE_X54Y49.F1      net (fanout=3)        0.466   Msub__sub0000_lut<5>
+    SLICE_X54Y49.X       Tilo                  0.759   _sub0000<7>
+                                                       Msub__sub0000_xor<7>11
+    SLICE_X54Y62.BY      net (fanout=3)        1.203   _sub0000<7>
+    SLICE_X54Y62.CLK     Tds                   0.461   N34
+                                                       Mram_data15.SLICEM_F
+    -------------------------------------------------  ---------------------------
+    Total                                     15.439ns (9.619ns logic, 5.820ns route)
+                                                       (62.3% logic, 37.7% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: TS_clk = PERIOD TIMEGRP "clk" 20 ns HIGH 40%;
+--------------------------------------------------------------------------------
+
+Paths for end point Mram_data11.SLICEM_F (SLICE_X54Y57.G3), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.865ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               i_2_3 (FF)
+  Destination:          Mram_data11.SLICEM_F (RAM)
+  Requirement:          0.000ns
+  Data Path Delay:      0.861ns (Levels of Logic = 1)
+  Clock Path Skew:      -0.004ns (0.009 - 0.013)
+  Source Clock:         clk_BUFGP rising at 20.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: i_2_3 to Mram_data11.SLICEM_F
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X54Y55.YQ      Tcko                  0.522   i_2_3
+                                                       i_2_3
+    SLICE_X54Y57.G3      net (fanout=6)        0.338   i_2_3
+    SLICE_X54Y57.CLK     Tah         (-Th)    -0.001   N26
+                                                       Mram_data11.SLICEM_F
+    -------------------------------------------------  ---------------------------
+    Total                                      0.861ns (0.523ns logic, 0.338ns route)
+                                                       (60.7% logic, 39.3% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point Mram_data11.SLICEM_G (SLICE_X54Y57.G3), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.865ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               i_2_3 (FF)
+  Destination:          Mram_data11.SLICEM_G (RAM)
+  Requirement:          0.000ns
+  Data Path Delay:      0.861ns (Levels of Logic = 1)
+  Clock Path Skew:      -0.004ns (0.009 - 0.013)
+  Source Clock:         clk_BUFGP rising at 20.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: i_2_3 to Mram_data11.SLICEM_G
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X54Y55.YQ      Tcko                  0.522   i_2_3
+                                                       i_2_3
+    SLICE_X54Y57.G3      net (fanout=6)        0.338   i_2_3
+    SLICE_X54Y57.CLK     Tah         (-Th)    -0.001   N26
+                                                       Mram_data11.SLICEM_G
+    -------------------------------------------------  ---------------------------
+    Total                                      0.861ns (0.523ns logic, 0.338ns route)
+                                                       (60.7% logic, 39.3% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point Mram_data12.SLICEM_F (SLICE_X54Y54.G3), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.880ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               i_2_1 (FF)
+  Destination:          Mram_data12.SLICEM_F (RAM)
+  Requirement:          0.000ns
+  Data Path Delay:      0.877ns (Levels of Logic = 1)
+  Clock Path Skew:      -0.003ns (0.013 - 0.016)
+  Source Clock:         clk_BUFGP rising at 20.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: i_2_1 to Mram_data12.SLICEM_F
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X55Y52.YQ      Tcko                  0.470   i_2_1
+                                                       i_2_1
+    SLICE_X54Y54.G3      net (fanout=5)        0.406   i_2_1
+    SLICE_X54Y54.CLK     Tah         (-Th)    -0.001   N28
+                                                       Mram_data12.SLICEM_F
+    -------------------------------------------------  ---------------------------
+    Total                                      0.877ns (0.471ns logic, 0.406ns route)
+                                                       (53.7% logic, 46.3% route)
+
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: TS_clk = PERIOD TIMEGRP "clk" 20 ns HIGH 40%;
+--------------------------------------------------------------------------------
+Slack: 17.483ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 8.000ns
+  High pulse limit: 1.007ns (Twph)
+  Physical resource: N6/CLK
+  Logical resource: Mram_data1.SLICEM_F/WS
+  Location pin: SLICE_X54Y38.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 17.483ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 8.000ns
+  High pulse limit: 1.007ns (Twph)
+  Physical resource: N6/CLK
+  Logical resource: Mram_data1.SLICEM_G/WS
+  Location pin: SLICE_X54Y38.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 17.483ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 8.000ns
+  High pulse limit: 1.007ns (Twph)
+  Physical resource: N8/CLK
+  Logical resource: Mram_data2.SLICEM_F/WS
+  Location pin: SLICE_X54Y43.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+
+
+All constraints were met.
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |   15.661|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
+
+Constraints cover 54108 paths, 0 nets, and 1262 connections
+
+Design statistics:
+   Minimum period:  15.661ns{1}   (Maximum frequency:  63.853MHz)
+
+
+------------------------------------Footnotes-----------------------------------
+1)  The minimum period statistic assumes all single cycle delays.
+
+Analysis completed Wed Dec 28 17:42:52 2016 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 170 MB
+
+
+

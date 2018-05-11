@@ -1,0 +1,197 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date:    09:43:16 10/20/2015 
+// Design Name: 
+// Module Name:    lab5 
+// Project Name: 
+// Target Devices: 
+// Tool versions: 
+// Description: 
+//
+// Dependencies: 
+//
+// Revision: 
+// Revision 0.01 - File Created
+// Additional Comments: 
+//
+//////////////////////////////////////////////////////////////////////////////////
+module lab6(
+    input clk,
+    input reset,
+    input button,
+    input rx,
+    output tx,
+    output [7:0] led
+    );
+
+localparam [1:0] S_IDLE = 2'b00, S_WAIT = 2'b01, S_SEND = 2'b10, S_INCR = 2'b11;
+localparam MEM_SIZE = 40;//120
+
+// declare system variables
+wire btn_pressed;
+reg [7:0] send_counter;
+reg [1:0] Q, Q_next;
+reg [7:0] data[0:MEM_SIZE-1];
+integer idx;
+
+// declare UART signals
+wire transmit;
+wire received;
+reg  [3:0] con;
+wire [7:0] rx_byte;
+reg  [7:0] rx_temp;
+reg  [7:0] ch[0:109];
+reg [7:0] vector[0:35];
+reg [19:0] ans[0:19];
+reg [4:0] hex[0:3];
+wire [7:0] tx_byte;
+wire [7:0] num1;
+wire [19:0] num2;
+wire is_receiving;
+wire is_transmitting;
+wire recv_error;
+integer count = 0;
+integer i = 0, j = 0, k = 0, m = 0, n = 0, p = 0, q;
+
+assign led = { 7'b0, btn_pressed };
+assign tx_byte = data[send_counter];
+
+
+debounce btn_db(
+    .clk(clk),
+    .btn_input(button),
+    .btn_output(btn_pressed)
+    );
+
+uart uart(
+    .clk(clk),
+    .rst(reset),
+    .rx(rx),
+    .tx(tx),
+    .transmit(transmit),
+    .tx_byte(tx_byte),
+    .received(received),
+    .rx_byte(rx_byte),
+    .is_receiving(is_receiving),
+    .is_transmitting(is_transmitting),
+    .recv_error(recv_error)
+    );
+
+// ------------------------------------------------------------------------
+// FSM of the transmission controller
+
+always @(posedge clk) begin
+  if (reset) Q <= S_IDLE;
+  else Q <= Q_next;
+end
+
+always @(*) begin // FSM next-state logic
+  case (Q)
+    S_IDLE: // wait for button click
+      if (btn_pressed == 1) Q_next = S_WAIT;
+      else Q_next = S_IDLE;
+    S_WAIT: // wait for the transmission of current data byte begins
+      if (is_transmitting == 1) Q_next = S_SEND;
+      else Q_next = S_WAIT;
+    S_SEND: // wait for the transmission of current data byte finishes
+      if (is_transmitting == 0) Q_next = S_INCR; // transmit next character
+      else Q_next = S_SEND;
+    S_INCR:
+      if (tx_byte == 8'h0) Q_next = S_IDLE; // string transmission ends
+      else Q_next = S_WAIT;
+  endcase
+end
+
+// FSM output logics
+assign transmit = (Q == S_WAIT)? 1 : 0;
+
+// FSM-controlled send_counter incrementing data path
+always @(posedge clk) begin
+  if (reset || (Q == S_IDLE))
+    send_counter <= 0;
+  else if (Q == S_INCR)
+    send_counter <= send_counter + 1;
+end
+
+// End of the FSM of the "Hello, World! " transmission controller
+// ------------------------------------------------------------------------
+
+// ------------------------------------------------------------------------
+// The following logic stores the UART input in a temporary buffer
+// You must replace this code by your own code to store multiple
+// bytes of data.
+//
+
+always @(posedge clk) begin
+	if (reset)
+	begin
+		for(q = 0; q < 107; q = q + 1)
+			ch[q] <= 8'b0;
+		count <= 0;
+		j <= 0;
+		i <= 0;
+	end
+	else if (received)
+	begin
+		ch[count] <= rx_byte;		
+		count <= count + 1;
+	end
+end
+
+always @(posedge clk)begin
+	if(reset)
+	begin
+		k <= 0;
+		j <= 0;
+	end
+	if (count == 108)
+	begin
+		for( i = 0; i < 108; i = i + 1)
+		begin
+			data[i] <= data[i]*10 + rx_byte - 8'd48;
+			j <= j == 2? 0 : j + 1;
+			k <= j == 2? k+1 : k;
+		end
+		//data[j] <= num1;
+		//i <= i + 3;
+		//j <= j + 1;
+	end
+end
+
+/*always @(posedge clk)begin
+	if(reset)
+	begin
+		m <= 16;
+		k <= 0;
+	end
+	if (con == 3'd2)
+	begin
+		ans[m] <= num2;
+		k <= k == 15? 0 : k + 3;
+		m <= m + 3;
+	end
+end
+
+matrix_times b(.v0(vector[k]), .v1(vector[k+1]), .v2(vector[k+2]), .v3(vector[k+3]), .num0(vector[m]), .num1(vector[m+1]), .num2(vector[m+2]), .num3(vector[m+3]), .con_valid(con), .clk(clk), .reset(reset), .ans(num2));
+
+always @(posedge clk)begin
+	if(reset)
+	begin
+		p <= 0;
+	end
+	if (con == 3'd3)
+	begin
+		hex[0] <= ans[0:4];
+		hex[1] <= ans[5:8];
+		hex[2] <= ans[9:12];
+		hex[3] <= ans[13:16];
+	end
+end*/
+
+
+// ------------------------------------------------------------------------
+
+endmodule
